@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block title %}Contact Manager{% endblock %} {%
+block content %}
+<h1>My contacts</h1>
+<form
+  method="POST"
+  action="{{ url_for('views.add_contact') }}"
+  class="form-card contact-form"
+>
+  <h2>Add a contact</h2>
+  <label for="name">Name</label>
+  <input id="name" name="name" required />
+  <label for="phoneNumber">Phone number</label>
+  <input id="phoneNumber" name="phoneNumber" type="tel" required />
+  <label for="email">Email</label>
+  <input id="email" name="email" type="email" required />
+  <button type="submit">Add contact</button>
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contact in contacts %}
+    <tr>
+      <td>
+        <input
+          form="edit-{{ contact.id }}"
+          name="name"
+          value="{{ contact.name }}"
+          required
+        />
+      </td>
+      <td>
+        <input
+          form="edit-{{ contact.id }}"
+          name="phoneNumber"
+          value="{{ contact.phoneNumber }}"
+          type="tel"
+          required
+        />
+      </td>
+      <td>
+        <input
+          form="edit-{{ contact.id }}"
+          name="email"
+          value="{{ contact.email }}"
+          type="email"
+          required
+        />
+      </td>
+      <td class="actions">
+        <form
+          id="edit-{{ contact.id }}"
+          method="POST"
+          action="{{ url_for('views.edit_contact', contact_id=contact.id) }}"
+        >
+          <button type="submit">Save</button>
+        </form>
+        <form
+          method="POST"
+          action="{{ url_for('views.delete_contact', contact_id=contact.id) }}"
+          onsubmit="return confirm('Delete this contact?');"
+        >
+          <button type="submit" class="danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="4">No contacts yet. Add your first one above.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

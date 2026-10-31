@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  color: #17202a;
+  background: #f4f1ea;
+  font-family: Georgia, "Times New Roman", serif;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f4f1ea, #dfe9e4);
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 8%;
+  background: #17202a;
+  color: #fff;
+}
+.logo {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.03em;
+}
+nav ul {
+  display: flex;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  color: inherit;
+}
+.container {
+  width: min(960px, 92%);
+  margin: 3rem auto;
+}
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1.5rem;
+}
+h2 {
+  margin-top: 0;
+}
+.form-card {
+  display: grid;
+  gap: 0.55rem;
+  max-width: 460px;
+  padding: 1.5rem;
+  margin: 1rem 0 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #c7d0ca;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(23, 32, 42, 0.08);
+}
+input {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #aebbb3;
+  border-radius: 4px;
+  background: #fff;
+  font: inherit;
+}
+button {
+  width: fit-content;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 4px;
+  background: #28745a;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover {
+  background: #1d5944;
+}
+button.danger {
+  background: #a33d35;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.8);
+}
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #c7d0ca;
+}
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.flash-container {
+  width: min(960px, 92%);
+  margin: 1rem auto 0;
+}
+.flash {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  background: #d8eee2;
+}
+.flash-error {
+  background: #f5d9d5;
+}
+@media (max-width: 700px) {
+  nav {
+    align-items: flex-start;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
